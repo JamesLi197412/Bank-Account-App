@@ -1,4 +1,4 @@
 package bankAccountApp;
 
-public class checking {
+public class Rate {
 }
