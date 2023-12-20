@@ -4,7 +4,7 @@ public abstract class Account implements iRate{
     // list common properties for saving and checking accounts
     private String name;
     private String sSN;
-    private double balanace;
+    private double balance;
     String accountNumber;
     static int index= 10000;
     double rate;
@@ -14,7 +14,7 @@ public abstract class Account implements iRate{
     public Account(String name, String sSN, double initDeposit){
         this.name = name;
         this.sSN = sSN;
-        this.balanace = initDeposit;
+        this.balance = initDeposit;
         System.out.println("New Account Created");
 
 
@@ -22,9 +22,14 @@ public abstract class Account implements iRate{
         index ++;
         this.accountNumber = setAccountNumber();
         //System.out.println("Account Number " + this.accountNumber);
+
+        System.out.println(getBaseRate());
+
+        setRate();
     }
 
     // Common Methods
+    public abstract void setRate();
 
     // Generate Account Number for user by types of Account
     private String setAccountNumber(){
@@ -36,6 +41,32 @@ public abstract class Account implements iRate{
 
     public void showInfo(){
         System.out.println("Print everything here");
+    }
+
+    // List common methods
+    public void deposit(double amount){
+        balance = balance + amount;
+        printBalance();
+    }
+
+    public void withdraw(double amount){
+        balance = balance - amount;
+        printBalance();
+    }
+
+    public void transfer(String toWhere, double amount){
+        balance = balance - amount;
+        System.out.println("Transfering $" + amount + "to" + "toWhere");
+        printBalance();
+    }
+
+    public void printBalance(){
+        System.out.println("Your current Balance: " + balance);
+    }
+
+    public void compound(){
+        double accruedInterest = balance * (rate/100);
+        System.out.println("Accrued Interests: ");
     }
 
 }
