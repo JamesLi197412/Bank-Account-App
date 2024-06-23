@@ -4,36 +4,52 @@ public abstract class Account {
     // list common properties
     private String name;
     private String password;
-    private String sSN;
+    private String cardID;
     private double balance;
-    String accountNumber;
-    static int index= 10000;
-    private double initDeposit;
 
     // Non-parameters
     public Account(){}
 
     // Constructor to set base properties and initialize the account
-    public Account(String name, String password, String sSN, double initDeposit){
+    public Account(String name, String password, String cardID, double initDeposit){
         this.name = name;
-        this.sSN = sSN;
+        this.cardID = cardID;
         this.balance = initDeposit;
         this.password = password;
 
-        // Generate new Account
-        index ++;
-        this.accountNumber = setAccountNumber();
-
     }
 
+    // Getters & Setters.
+    public String getName() {
+        return name;
+    }
 
+    public String getPassword() {
+        return password;
+    }
 
-    // Generate Account Number for user by types of Account
-    private String setAccountNumber(){
-        String lastTwoOfSSN = sSN.substring(sSN.length()-2, sSN.length());
-        int uniqueID = index;
-        int randomNumber = (int) (Math.random() * Math.pow(10,3));
-        return lastTwoOfSSN + uniqueID + randomNumber;
+    public String getCardID() {
+        return cardID;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCardID(String cardID) {
+        this.cardID = cardID;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
 
@@ -55,10 +71,5 @@ public abstract class Account {
         balance = balance - amount;
         System.out.println("Transfering $" + amount + "to" + toWhere);
     }
-
-
-
-
-
 
 }
