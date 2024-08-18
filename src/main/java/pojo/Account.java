@@ -1,4 +1,4 @@
-package bankAccountApp;
+package main.pojo;
 
 public abstract class Account {
     // list common properties
@@ -51,7 +51,6 @@ public abstract class Account {
     public void setBalance(double balance) {
         this.balance = balance;
     }
-
 
     // Common method for ATM operation
     public void deposit(double amount){

@@ -1,4 +1,4 @@
-package dao;
+package main.config;
 
 public class MysqlConfig {
 }
