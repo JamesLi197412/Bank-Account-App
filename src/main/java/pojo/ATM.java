@@ -1,7 +1,7 @@
-package main.pojo;
+package main.java.pojo;
 
 public class ATM {
-    private double balance = 1000.00; // Sample initial balance
+    private double balance = 0; // Sample initial balance
     private String correctPin = "1234"; // Sample PIN
 
     public boolean login(String pin) {

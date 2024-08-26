@@ -1,4 +1,4 @@
-package main.pojo;
+package main.java.pojo;
 
 public abstract class Account {
     // list common properties

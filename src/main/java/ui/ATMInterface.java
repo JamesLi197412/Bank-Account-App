@@ -1,20 +1,20 @@
-package main.ui;
+package main.java.ui;
 
-import main.pojo.ATM;
+import main.java.pojo.ATM;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ATMGUI {
+public class ATMInterface {
     private JFrame frame;
     private JTextField pinField;
     private JTextArea screen;
     private JButton loginButton, withdrawButton, balanceButton, cancelButton;
     private ATM atm;
 
-    public ATMGUI() {
+    public ATMInterface() {
         atm = new ATM();
     }
 
