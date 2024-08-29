@@ -10,12 +10,11 @@ public class MysqlConfig {
     private String user;
     private String password;
 
-    private void loadProperties() {
+    public Connection loadProperties() {
         Properties properties = new Properties();
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("db.properties")) {
             if (input == null) {
                 System.out.println("Sorry, unable to find db.properties");
-                return;
             }
 
             // Load a properties file from class path
@@ -25,24 +24,44 @@ public class MysqlConfig {
             url = properties.getProperty("db.url");
             user = properties.getProperty("db.user");
             password = properties.getProperty("db.password");
-            System.out.println("Success");
+
+            Connection connection = this.connect(url,user,password);
+            return connection;
+
 
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        return null;
     }
 
-    public Connection connect() {
+    public Connection connect(String url, String user, String password) {
         Connection connection = null;
+        Statement statement = null;
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
+
+            return connection;
+            /*
+            String sql = "SELECT * FROM accounts";
+            statement = connection.createStatement();
+
+            ResultSet rs = statement.executeQuery(sql);
+
+            System.out.println(rs);
+
             System.out.println("Connection to the database established successfully.");
+            */
+
         } catch (SQLException e) {
             System.out.println("Connection failed.");
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
-        System.out.println("Connected Succsssfully");
-        return connection;
+
+        return null;
     }
 
     public void queryDatabase(Connection connection, String tableName) {

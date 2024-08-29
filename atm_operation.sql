@@ -84,4 +84,6 @@ UPDATE transactions
 SET amount = 10000
 WHERE account_id = 1231234871;
 
+SELECT * FROM bank.accounts;
+
 
